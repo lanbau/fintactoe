@@ -7,7 +7,7 @@ var stormpath = require('express-stormpath')
 router.get('/', stormpath.loginRequired, function (req, res, next) {
   // console.log(req.user)
   // or more concisely	 
-  res.render('dashboard')
+  res.render('ocr')
 })
 
 module.exports = router

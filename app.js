@@ -8,6 +8,7 @@ var bodyParser = require('body-parser')
 var routes = require('./routes/index')
 var users = require('./routes/users')
 var dashboard = require('./routes/dashboard')
+var ocr = require('./routes/ocr')
 
 var stormpath = require('express-stormpath')
 
@@ -43,6 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', routes)
 app.use('/users', users)
 app.use('/dashboard', dashboard)
+app.use('/ocr', ocr)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
