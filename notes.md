@@ -3,7 +3,7 @@
 var watson = require('watson-developer-cloud')
 router.post('/', function (req, res, next) {
   var alchemy_data_news = watson.alchemy_data_news({
-    api_key: '952ce70f7f9c9daba99395ce8214a439cdcc0738'
+    api_key: ''
   })
   // News about company acquisitions in the past 24 hours:
   // More information: http://docs.alchemyapi.com/docs/introduction
@@ -250,29 +250,3 @@ var json = {
     "status": "OK"
   }
 }
-
-//Prepare form data
-var formData = new FormData();
-formData.append("file", fileToUpload);
-formData.append("url", "URL-of-Image-or-PDF-file");
-formData.append("language", "eng");
-formData.append("apikey", "helloworld");
-
-formData.append("isOverlayRequired", 'True');
-//Send OCR Parsing request asynchronously
-
-var form = document.forms.namedItem("fileinfo");
-form.addEventListener('submit', function(ev) {
-  jQuery.ajax({
-    url: 'https://api.ocr.space/parse/image',
-    data: formData,
-    dataType: 'json',
-    cache: false,
-    contentType: false,
-    processData: false,
-    type: 'json',
-    success: function (ocrParsedResult) {
-      console.log(ocrParsedResult)
-    }
-  });
-})
