@@ -250,3 +250,24 @@ var json = {
     "status": "OK"
   }
 }
+
+<!-- TradingView Widget BEGIN -->
+<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+<script type="text/javascript">
+new TradingView.widget({
+  "width": 800,
+  "height": 300,
+  "symbol": "FX:USDJPY",
+  "interval": "D",
+  "timezone": "Asia/Singapore",
+  "theme": "Black",
+  "style": "1",
+  "locale": "en",
+  "toolbar_bg": "#f1f3f6",
+  "hide_top_toolbar": true,
+  "save_image": false,
+  "details": true,
+  "hideideas": true
+});
+</script>
+<!-- TradingView Widget END -->

@@ -7,146 +7,8 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <style>
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height:1500px;}
-
-    /* Set gray background color and 100% height */
-    .sidenav {
-      width:200px;
-      background-color: black;
-      height: 100%;
-    }
-
-    /* On small screens, set height to 'auto' for the grid */
-    @media screen and (max-width: 767px) {
-      .row.content {height: auto;}
-    }
-    #testarea {
-        width: 100px;
-        height: 100px;
-        background-color: red;
-        position: relative;
-        -webkit-animation-name: example; /* Chrome, Safari, Opera */
-        -webkit-animation-duration: 4s; /* Chrome, Safari, Opera */
-        -webkit-animation-iteration-count: 3; /* Chrome, Safari, Opera */
-        animation-name: example;
-        animation-duration: 4s;
-        animation-iteration-count: 3;
-    }
-
-    /* Chrome, Safari, Opera */
-    @-webkit-keyframes example {
-        0%   {background-color:red; left:0px; top:0px;}
-        25%  {background-color:yellow; left:200px; top:0px;}
-        50%  {background-color:blue; left:200px; top:200px;}
-        75%  {background-color:green; left:0px; top:200px;}
-        100% {background-color:red; left:0px; top:0px;}
-    }
-
-    /* Standard syntax */
-    @keyframes example {
-        0%   {background-color:red; left:0px; top:0px;}
-        25%  {background-color:yellow; left:200px; top:0px;}
-        50%  {background-color:blue; left:200px; top:200px;}
-        75%  {background-color:green; left:0px; top:200px;}
-        100% {background-color:red; left:0px; top:0px;}
-    }
-  </style>
-  <script type="text/javascript">
-    var accessToken = "f4333979e88d483da5e6ada088e6721b";
-    var subscriptionKey = "88d880e3011c4fada836b1584eb82a05";
-    var baseUrl = "https://api.api.ai/v1/";
-    $(document).ready(function() {
-      // key in and enter data
-      $("#input").keypress(function(event) {
-        if (event.which == 13) {
-          event.preventDefault();
-          send();
-        }
-      });
-      // click on rec, need https to prevent browser from asking allow microphone
-      $("#rec").click(function(event) {
-        switchRecognition();
-      });
-    });
-    var recognition;
-    function startRecognition() {
-      recognition = new webkitSpeechRecognition();
-      recognition.onstart = function(event) {
-        updateRec();
-      };
-      recognition.onresult = function(event) {
-        var text = "";
-          for (var i = event.resultIndex; i < event.results.length; ++i) {
-            text += event.results[i][0].transcript;
-          }
-          setInput(text);
-        stopRecognition();
-      };
-      recognition.onend = function() {
-        stopRecognition();
-      };
-      recognition.lang = "en-US";
-      recognition.start();
-    }
-
-    function stopRecognition() {
-      if (recognition) {
-        recognition.stop();
-        recognition = null;
-      }
-      updateRec();
-    }
-    // this gets called when click on speak button
-    function switchRecognition() {
-      // check if there is exisiting recognition object
-      if (recognition) {
-        stopRecognition();
-      } else {
-        startRecognition();
-      }
-    }
-    function setInput(text) {
-      $("#input").val(text);
-      send();
-    }
-    function updateRec() {
-      $("#rec").text(recognition ? "Stop" : "Speak");
-    }
-    function send() {
-      // get speech input
-      var text = $("#input").val();
-      $.ajax({
-        type: "POST",
-        url: baseUrl + "query/",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        headers: {
-          "Authorization": "Bearer " + accessToken,
-          "ocp-apim-subscription-key": subscriptionKey
-        },
-        data: JSON.stringify({ q: text, lang: "en" }),
-        success: function(data) {
-          var res = JSON.stringify(data, undefined, 2);
-          setResponse(res);
-          console.log(data.result.parameters.npmIn)
-          var code = data.result.parameters.npmIn
-          var s = document.createElement('script');
-          s.type = 'text/javascript';
-          s.appendChild(document.createTextNode(code));
-          document.body.appendChild(s);
-        },
-        error: function() {
-          setResponse("Internal Server Error");
-        }
-      });
-    }
-    function setResponse(val) {
-      $("#response").text(val);
-      return val
-    }
-  </script>
+  <link rel="stylesheet" href="css/dashboard.css" media="screen" charset="utf-8">
+  <script src="js/dashboard.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-inverse visible-xs">
@@ -175,9 +37,9 @@
       <div class="col-sm-3 sidenav hidden-xs">
         <h2>Logo</h2>
         <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="#section1">Dashboard</a></li>
-          <li><a href="#section2">Age</a></li>
-          <li><a href="#section3">Gender</a></li>
+          <li class="active"><a href="#section1">Talk Code</a></li>
+          <li><a href="/ocr">OCR</a></li>
+          <li><a href="/glass">Glass</a></li>
           <li><a href="#section3">Geo</a></li>
         </ul><br>
       </div>
@@ -185,105 +47,21 @@
 
       <div class="col-sm-9">
         <div class="well">
-          <h4>Dashboard - USD/JPY Data Feed</h4>
-          <!-- TradingView Widget BEGIN -->
-          <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
-          <script type="text/javascript">
-          new TradingView.widget({
-            "width": 800,
-            "height": 300,
-            "symbol": "FX:USDJPY",
-            "interval": "D",
-            "timezone": "Asia/Singapore",
-            "theme": "Black",
-            "style": "1",
-            "locale": "en",
-            "toolbar_bg": "#f1f3f6",
-            "hide_top_toolbar": true,
-            "save_image": false,
-            "details": true,
-            "hideideas": true
-          });
-          </script>
-          <!-- TradingView Widget END -->
-
+          <h4>Dashboard - Speak</h4>
         </div>
+
         <div class="row">
           <div class="col-sm-12">
             <div class="well">
-              On 29 Jan 2016, Bank of Japan introduced negative interest rates that weakened the YEN. Our concern is on the US Market News and Data.
+              <input id="input" type="text"> <button id="rec">Speak</button>
+              <br>Response<br> <textarea id="response" cols="40" rows="20"></textarea>
+              <div id="testarea"></div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-3">
-            <div class="well">
-              <h4>Users</h4>
-              <p>1 Million</p>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="well">
-              <h4>Pages</h4>
-              <p>100 Million</p>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="well">
-              <h4>Sessions</h4>
-              <p>10 Million</p>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="well">
-              <h4>Bounce</h4>
-              <p>30%</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="well">
-              <p>Text</p>
-              <p>Text</p>
-              <p>Text</p>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="well">
-              <p>Text</p>
-              <p>Text</p>
-              <p>Text</p>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="well">
-              <p>Text</p>
-              <p>Text</p>
-              <p>Text</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-8">
-            <div class="well">
-              <p>Text</p>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="well">
-              <p>Text</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <input id="input" type="text"> <button id="rec">Speak</button>
-          <br>Response<br> <textarea id="response" cols="40" rows="20"></textarea>
-          <div id="testarea"></div>
         </div>
       </div>
     </div>
   </div>
-  
+
   </body>
 </html>
