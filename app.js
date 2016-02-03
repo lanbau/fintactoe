@@ -9,6 +9,7 @@ var routes = require('./routes/index')
 var users = require('./routes/users')
 var dashboard = require('./routes/dashboard')
 var ocr = require('./routes/ocr')
+var glass = require('./routes/glass')
 
 var stormpath = require('express-stormpath')
 
@@ -45,6 +46,7 @@ app.use('/', routes)
 app.use('/users', users)
 app.use('/dashboard', dashboard)
 app.use('/ocr', ocr)
+app.use('/glass', glass)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
