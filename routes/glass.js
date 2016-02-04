@@ -17,9 +17,13 @@ router.post('/', function (req, res, next) {
     name: 'fintactoe'
   })
   // console.log(req.user)
-  uber.products.list({ latitude: req.body.name.result.items[0].latitude, longitude: req.body.name.result.items[0].longitude }, function (err, res) {
+  uber.products.list({ latitude: req.body.name.result.items[0].latitude, longitude: req.body.name.result.items[0].longitude }, function (err, response) {
     if (err) console.error(err)
-    else console.log(res)
+    else {
+      var output = JSON.stringify(response, null, 2)
+      res.send(output)
+      res.end()
+    }
   })
 })
 
