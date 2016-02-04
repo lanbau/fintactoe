@@ -17,11 +17,30 @@ $('form#data').submit(function (event) {
     contentType: false,
     processData: false,
     success: function (returndata) {
+      document.getElementById('receipt').style.display = 'inline'
       console.log(returndata)
       $('.ocr-result').html(returndata.ParsedResults[0].ParsedText)
       returndata.ParsedResults[0].TextOverlay.Lines.forEach(function (e) {
         e.Words.forEach(function (e) {
-          console.log(e.WordText)
+          var td0 = document.createElement('td')
+          var td1 = document.createElement('td')
+          var td2 = document.createElement('td')
+          var td3 = document.createElement('td')
+          var td4 = document.createElement('td')
+
+          var tr = document.createElement('tr')
+          td0.innerHTML = e.WordText
+          td1.innerHTML = e.Height
+          td2.innerHTML = e.Left
+          td3.innerHTML = e.Top
+          td4.innerHTML = e.Width
+
+          tr.appendChild(td0)
+          tr.appendChild(td1)
+          tr.appendChild(td2)
+          tr.appendChild(td3)
+          tr.appendChild(td4)
+          document.getElementById('tbody').appendChild(tr)
         })
       })
     }

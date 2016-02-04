@@ -102,6 +102,18 @@
 								<div class="item">
 							    <i class="large github middle aligned icon"></i>
 							    <div class="content">
+							      <p>White background</p>
+							    </div>
+							  </div>
+								<div class="item">
+							    <i class="large github middle aligned icon"></i>
+							    <div class="content">
+							      <p>US Dollar Yen Chart</p>
+							    </div>
+							  </div>
+								<div class="item">
+							    <i class="large github middle aligned icon"></i>
+							    <div class="content">
 							      <p>Secret command</p>
 							    </div>
 							  </div>
@@ -109,7 +121,9 @@
 	        </div>
 	        <div class="eight wide right floated column">
 						<h1>Result Area</h1>
-	          <div id="testarea" class="ui raised very padded text container segment"></div>
+	          <div id="testarea" class="ui raised very padded text container segment">
+							<div id="tv-medium-widget-cdee4"></div>
+						</div>
 	        </div>
 	      </div>
 	      <div class="row">
@@ -147,5 +161,22 @@
 	    </div>
 	  </div>
 	</div>
+	<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+	<script type="text/javascript">
+		new TradingView.MediumWidget({
+			"container_id": "tv-medium-widget-cdee4",
+			"symbols": [
+				"FX:USDJPY|1m"
+			],
+			"gridLineColor": "#E9E9EA",
+			"fontColor": "#83888D",
+			"underLineColor": "#dbeffb",
+			"trendLineColor": "#4bafe9",
+			"width": "450px",
+			"height": "350px",
+			"tradeItWidget": false,
+			"locale": "en"
+			})
+	</script>
 </body>
 </html>

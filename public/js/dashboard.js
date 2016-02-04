@@ -6,6 +6,9 @@ $(document).ready(function () {
   button.addEventListener('click', function () {
     document.getElementById('response').style.display = 'inline'
   })
+
+  document.getElementById('tv-medium-widget-cdee4').style.display = 'none'
+
   // key in and enter data
   $('#input').keypress(function (event) {
     if (event.which === 13) {
@@ -80,8 +83,8 @@ function send () {
       setResponse(res)
       console.log(data.result.parameters.npmIn)
       var airesponse = data.result.parameters.npmIn
-      if (airesponse === 'optical') {
-        console.log('hi')
+      if (airesponse === 'forex') {
+        document.getElementById('tv-medium-widget-cdee4').style.display = 'inline'
       } else {
         var code = data.result.parameters.npmIn
         var s = document.createElement('script')

@@ -74,8 +74,24 @@
     <div class="ui vertical stripe segment">
       <div class="ui text container">
         <h3 class="ui header">OCR Results</h3>
-        <p><div class="ocr-result"></div></p>
+        <p>Raw Text<div class="ocr-result"></div></p>
         <div id="ocr-table"></div>
+
+				<h4>Actual Table</h4>
+        <table id="table" class="ui celled table">
+					<thead id="thead">
+						<tr>
+              <th>WordText</th>
+              <th>Height</th>
+              <th>Left</th>
+              <th>Top</th>
+              <th>Width</th>
+            </tr>
+					</thead>
+					<tbody id="tbody">
+					</tbody>
+				</table>
+				<img id = "receipt" src="img/11-receipt-Fish-Restaurant.jpg"/ style="display:none;">
         <h4>Example Table</h4>
         <table class="ui celled table">
           <thead>
