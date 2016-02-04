@@ -57,14 +57,29 @@
                 <input id="input" type="text" class="form-control">
               </div>
                <button id="rec" class="btn btn-success">Speak</button>
+               <ol>
+                 <li>bootstrap button</li>
+                 <li>give me my client list</li>
+                 <li>clear test area</li>
+                 <li>green background</li>
+                 <li>red background</li>
+                 <li>secret command</li>
+               </ol>
             </div>
             <div class="well">
               <h4>AI Playground</h4>
               <div id="testarea"></div>
             </div>
             <div class="well">
-              <br>Response<br> <textarea id="response" cols="40" rows="20"></textarea>
+              <h5>Response</h5> <textarea id="response" cols="40" rows="20"></textarea>
               <button id="showjson" type="button" name="button" class="btn btn-warning">Show JSON</button>
+            </div>
+            <div class="well well-lg">
+              <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <img src="img/car.png" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+              </div>
+
+              <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
             </div>
           </div>
         </div>
@@ -75,5 +90,7 @@
       </div>
     </div>
   </div>
+  <script src="http://rawgit.com/bevacqua/dragula/master/dist/dragula.js"></script>
+  <script src="js/dragndrop.js"></script>
   </body>
 </html>
