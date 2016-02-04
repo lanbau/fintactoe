@@ -1,151 +1,133 @@
-<!DOCTYPE html>
-<html class=no-js>
+<html>
 <head>
-	<meta charset="utf-8">
-	<meta name="description" content="FinTacToe">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>FinTacToe</title>
-	<link rel=stylesheet href="css/main.css">
-	<script src="js/vendor/modernizr.js"></script>
-	<script src="js/vendor/respond.min.js"></script>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" class="ui" href="https://oss.maxcdn.com/semantic-ui/2.1.8/semantic.min.css">
+	<link rel="stylesheet" href="css/dashboard.css" media="screen" charset="utf-8">
 </head>
 <body>
-	<div class="level level-hero hero-home has-hint">
-		<div class="hero-overlay visible-lg"></div>
-		<video loop id=bg-video class=fullscreen-video>
-			<source src="http://alvarez.is/bt/appi.webm" type="video/webm">
-			<source src="http://alvarez.is/bt/appi.mp4" type="video/mp4">
-		</video>
-		<div class="container full-height">
-			<div class=v-align-parent>
-				<div class=v-center>
-					<div class="row">
-						<div class="col-xs-10 col-sm-6">
-							<h1 class="mb-10 heading">
-                FinTacToe.
-              </h1>
-							<div class="subheading mb-20">
-                Create While You Speak
-                <br class=hidden-xs>blended with top notch artificial intelligence.
-              </div>
-						</div>
-					</div>
-					<div>
-						<a class="btn btn-prepend btn-launch-video" href="/register">
-							<i class="prepended icon-append-play"></i>Register
-						</a>
-						<a class="btn btn-prepend" href="/login">
-							<i class="prepended icon-append-iphone"></i>Login
-						</a>
-					</div>
-				</div>
-			</div>
-			<div class=hint-arrow></div>
+	<!-- Following Menu -->
+	<div class="ui large top fixed hidden menu">
+	  <div class="ui container">
+			<a class="active item">Home</a>
+			<a class="item" href="/ocr">OCR</a>
+			<a class="item" href="/dashboard">AI Dashboard</a>
+			<a class="item" href="/glass">Glass</a>
+			<a class="item" href="/ideas">Ideas</a>
+	    <div class="right menu">
+	      <div class="item">
+	        <a class="ui inverted button" href="https://github.com/lanbau/fintactoe">Fork Project</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- Sidebar Menu -->
+	<div class="ui vertical inverted sidebar menu">
+		<a class="active item">Home</a>
+		<a class="item" href="/ocr">OCR</a>
+		<a class="item" href="/dashboard">AI Dashboard</a>
+		<a class="item" href="/glass">Glass</a>
+		<a class="item" href="/ideas">Ideas</a>
+		<div class="right item">
+			<a class="ui inverted button" href="https://github.com/lanbau/fintactoe">Fork Project</a>
 		</div>
 	</div>
-	<div class=level>
-		<div class="container mb-100 xs-mb-40">
-			<div class=row>
-				<div class="col-sm-5 col-md-4 col-md-offset-2 col-sm-offset-1">
-					<h1 class="mb-10 xs-mb-10 heading color-dark heading-bordered">Talk<br class=hidden-xs>Now.</h1>
-				</div>
-				<div class="col-sm-5 col-sm-offset-1">
-					<h2 class="w-300 color-dark mb-10 xs-mb-10">Artifical Power in Seconds.</h2>
-					<p class="xs-mw">Free Trial.
-				</div>
-			</div>
-		</div>
-		<img src="img/v2/bearbull.jpg" alt class="mb-80 hidden-xs iphone-inline" style="border-radius:20px;">
-		<div class=container>
-			<div class="row mb-90 xs-mb-0">
-				<div class="col-sm-1 col-sm-offset-2">
-					<i class="icon icon-check"></i>
-				</div>
-				<div class="col-sm-3">
-					<h3 class="mb-15">Isomorphic</h3>
-					<p class="smaller xs-mb-40 xs-mw">Client Side + Server Side JavaScript.
-				</div>
-				<div class="col-sm-1">
-					<i class="icon icon-calendar"></i>
-				</div>
-				<div class="col-sm-3">
-					<h3 class="mb-15">Build Duration</h3>
-					<p class="smaller xs-mb-40 xs-mw">This was built in 1 week.
-				</div>
-			</div>
-			<div class=row>
-				<div class="col-sm-1 col-sm-offset-2">
-					<i class="icon icon-user"></i>
-				</div>
-				<div class="col-sm-3">
-					<h3 class="mb-15">User Friendly</h3>
-					<p class="smaller xs-mb-40 xs-mw">Smooth usage.
-				</div>
-				<div class="col-sm-1">
-					<i class="icon icon-clock"></i>
-				</div>
-				<div class="col-sm-3">
-					<h3 class="mb-15">On Time</h3>
-					<p class="smaller xs-mb-40 xs-mw">With one touch, you can get your news analysed.
-				</div>
-			</div>
-		</div>
+
+
+	<!-- Page Contents -->
+	<div class="pusher">
+	  <div class="ui inverted vertical masthead center aligned segment">
+
+	    <div class="ui container">
+	      <div class="ui large secondary inverted pointing menu">
+	        <a class="toc item">
+	          <i class="sidebar icon"></i>
+	        </a>
+	        <a class="active item">Home</a>
+	        <a class="item" href="/ocr">OCR</a>
+					<a class="item" href="/dashboard">AI Dashboard</a>
+	        <a class="item" href="/glass">Glass</a>
+	        <a class="item" href="/ideas">Ideas</a>
+	        <div class="right item">
+	          <a class="ui inverted button" href="https://github.com/lanbau/fintactoe">Fork Project</a>
+	        </div>
+	      </div>
+	    </div>
+
+	    <div class="ui text container">
+	      <h1 class="ui inverted header">
+	        FinTacToe.
+	      </h1>
+	      <h2>Web Development Immersive Project 4</h2>
+        <h3>(Singapore: 1 Nov 15 to 5 Feb 16)</h3>
+        <br>
+        <a href="/register"><div class="ui massive inverted olive button" id="register">Register <i class="unmute icon"></i></div></a>
+	      <a href="/login"><div class="ui massive inverted white button" id="login">Login <i class="unmute icon"></i></div></a>
+	    </div>
+	  </div>
+
+    <div class="ui vertical stripe quote segment">
+			<h4 class="ui horizontal header divider">
+				<a href="#">Team Members</a>
+			</h4>
+      <div class="ui equal width stackable internally celled grid">
+        <div class="center aligned row">
+          <div class="column">
+            <h3>Steve Tan (@chuckberry1974)</h3>
+            <a href="https://github.com/chuckberry1974" class="ui medium rounded image">
+              <img src="http://jsstrn.github.io/ga-wdi-class/img/Steve.jpg" height="100" width="200">
+            </a>
+
+
+          </div>
+          <div class="column">
+            <h3>Irvin Lin (@lanbau)</h3>
+            <a href="https://github.com/lanbau" class="ui medium rounded image">
+              <img src="http://jsstrn.github.io/ga-wdi-class/img/irvin.jpg">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui vertical stripe segment">
+      <div class="ui text container">
+        <h3 class="ui header">Features</h3>
+        <p>Code by voice. Optical character recognition & Geo-location Listing</p>
+        <a href="/register" class="ui large button">Sign Up</a>
+        <h4 class="ui horizontal header divider">
+          <a href="#">FinTacToe</a>
+        </h4>
+        <h3 class="ui header">Technologies Used</h3>
+        <p>Semantic UI, Express.JS, EJS, AI.ai, OCR API, Google API, JQuery, Vanilla JavaScript, Uber API & StormPath</p>
+        <a href="/register" class="ui large button">Just Sign Me Up Already!</a>
+      </div>
+    </div>
+	  <div class="ui inverted vertical footer segment">
+	    <div class="ui container">
+	      <div class="ui stackable inverted divided equal height stackable grid">
+	        <div class="three wide column">
+	          <h4 class="ui inverted header">About</h4>
+	          <div class="ui inverted link list">
+	            <a href="#" class="item">About Us</a>
+	            <a href="#" class="item">Contact Us</a>
+	          </div>
+	        </div>
+	        <div class="three wide column">
+	          <h4 class="ui inverted header">Services</h4>
+	          <div class="ui inverted link list">
+	            <a href="#" class="item">Software Pre-Order</a>
+	            <a href="#" class="item">Sharing is Caring</a>
+	          </div>
+	        </div>
+	        <div class="seven wide column">
+	          <h4 class="ui inverted header">Copyright 2016</h4>
+	          <p>FinTacToe.</p>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
 	</div>
-	<div class="level level-img-right">
-		<div class="container xs-mb-30">
-			<img class=img-right-sprite src="img/v2/134019917.jpg">
-			<div class="row mb-60 xs-mb-20">
-				<div class="col-sm-6 col-lg-offset-1 col-lg-5">
-					<h1 class="mb-20 xs-mb-10 heading color-dark heading-bordered xl-heading-outdent">Details</h1>
-					<h2 class="w-300 color-dark mb-10">All what you want in one platform</h2>
-					<p class=xs-mw>Now with FinTacToe you have it on your fingertips.
-				</div>
-			</div>
-		<div class="visible-xs xs-mw xs-mb-40">
-			<img src="img/v2/134019917.jpg" alt>
-		</div>
-			<div class="row mb-60 xs-mb-20">
-				<div class="col-sm-1 col-lg-offset-1">
-					<i class="icon icon-globe"></i>
-				</div>
-				<div class="col-sm-4 col-md-3">
-					<h3 class="mb-15">Worldwide</h3>
-					<p class="smaller xs-mw">Get news from major trading markets.
-				</div>
-			</div>
-			<div class="row mb-60 xs-mb-20">
-				<div class="col-sm-1 col-lg-offset-1">
-					<i class="icon icon-eye"></i>
-				</div>
-				<div class="col-sm-4 col-md-3">
-					<h3 class="mb-15">Privacy</h3>
-					<p class="smaller xs-mw">Your data is never shared.
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-1 col-lg-offset-1">
-					<i class="icon icon-bubble"></i>
-				</div>
-				<div class="col-sm-4 col-md-3">
-					<h3 class="mb-15">Social Integration</h3>
-					<p class="smaller xs-mw">Share your data with your friends.
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="level level-outro text-center">
-		<!-- to fill in if got time -->
-	</div>
-	<div class="footer text-center">
-  	<p class="fmenu">
-  		<!-- <a href="index.html">HOME</a> | <a href="about.html">ABOUT</a> -->
-  	</p>
-	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<!-- <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script> -->
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/dropdown.js"></script>
-	<script src="js/main.js"></script>
 </body>
 </html>

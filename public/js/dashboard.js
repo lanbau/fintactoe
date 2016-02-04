@@ -1,10 +1,9 @@
-var accessToken = 'f4333979e88d483da5e6ada088e6721b'
-var subscriptionKey = '88d880e3011c4fada836b1584eb82a05'
-var baseUrl = 'https://api.api.ai/v1/'
+// document.querySelector('body div.ui.massive.icon.input').className = 'ui massive icon input loading'
+// document.querySelector('body div.ui.massive.icon.input.loading').className = 'ui massive icon input'
 $(document).ready(function () {
   var button = document.getElementById('showjson')
   document.getElementById('response').style.display = 'none'
-  button.addEventListener('click', function(){
+  button.addEventListener('click', function () {
     document.getElementById('response').style.display = 'inline'
   })
   // key in and enter data
@@ -68,23 +67,28 @@ function send () {
   var text = $('#input').val()
   $.ajax({
     type: 'POST',
-    url: baseUrl + 'query/',
+    url: 'https://api.api.ai/v1/' + 'query/',
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     headers: {
-      'Authorization': 'Bearer' + accessToken,
-      'ocp-apim-subscription-key': subscriptionKey
+      'Authorization': 'Bearer' + 'f4333979e88d483da5e6ada088e6721b',
+      'ocp-apim-subscription-key': '88d880e3011c4fada836b1584eb82a05'
     },
     data: JSON.stringify({ q: text, lang: 'en' }),
     success: function (data) {
       var res = JSON.stringify(data, undefined, 2)
       setResponse(res)
       console.log(data.result.parameters.npmIn)
-      var code = data.result.parameters.npmIn
-      var s = document.createElement('script')
-      s.type = 'text/javascript'
-      s.appendChild(document.createTextNode(code))
-      document.body.appendChild(s)
+      var airesponse = data.result.parameters.npmIn
+      if (airesponse === 'optical') {
+        console.log('hi')
+      } else {
+        var code = data.result.parameters.npmIn
+        var s = document.createElement('script')
+        s.type = 'text/javascript'
+        s.appendChild(document.createTextNode(code))
+        document.body.appendChild(s)
+      }
     },
     error: function () {
       setResponse('Internal Server Error')
