@@ -21,7 +21,6 @@ FinTacToe is a WDI Project 4 created by @lanbau & @chuckberry1974 . It is a web 
 - Users are able to get Google Glass Mirror location (latitude & longitude) and retrieve a list of Uber drivers near that location.
 
 ##Technologies Used
-
 - Express
 - HTML
 - CSS
@@ -35,9 +34,16 @@ FinTacToe is a WDI Project 4 created by @lanbau & @chuckberry1974 . It is a web 
 - Stormpath
 
 ###Installation Instructions
-```
-clone this repo
-npm install
-npm start
-visit http://localhost:3000 in your browser
+``` javascript
+In order for the application to work, you need to retrieve API Keys from the following services:
+- stormpath API
+- OCR.space
+- Uber API
+- Google Mirror API
+- api.ai API
+- clone this repo
+- add API keys in bash profile
+- npm install
+- npm start
+- visit http://localhost:3000 in your browser
 ```
