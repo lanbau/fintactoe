@@ -3,7 +3,6 @@ var router = express.Router()
 var stormpath = require('express-stormpath')
 var Uber = require('node-uber')
 
-/* GET home page. */
 router.get('/', stormpath.loginRequired, function (req, res, next) {
   res.render('glass')
 })

@@ -85,6 +85,37 @@ function send () {
       var airesponse = data.result.parameters.npmIn
       if (airesponse === 'forex') {
         document.getElementById('tv-medium-widget-cdee4').style.display = 'inline'
+      } else if (airesponse === 'employeedb') {
+        console.log('success')
+        fetch('/dashboard', {
+          method: 'post',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: 'employeedb'
+          })
+        }).then(function (response) {
+          return response.json()
+        }).then(function (employeeList) {
+          employeeList.forEach(function (person) {
+            var empTableBody = document.getElementById('empTableBody')
+            var td0 = document.createElement('td')
+            var td1 = document.createElement('td')
+            var td2 = document.createElement('td')
+
+            td0.innerHTML = person.firstName
+            td1.innerHTML = person.lastName
+            td2.innerHTML = person.scores
+            var tr = document.createElement('tr')
+            tr.appendChild(td0)
+            tr.appendChild(td1)
+            tr.appendChild(td2)
+            empTableBody.appendChild(tr)
+            document.getElementById('employeedb').style.display = 'inline'
+          })
+        })
       } else {
         var code = data.result.parameters.npmIn
         var s = document.createElement('script')
